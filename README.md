@@ -36,7 +36,7 @@ services:
       - "MYSQL_ROOT_PASSWORD=${ROOT_PWD}"
       - "TZ=America/Chicago"
     networks:
-      - webtools
+      - limesurvey
     ports:
       - "3306:3306"
 networks:
