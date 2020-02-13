@@ -11,9 +11,10 @@
 
 I recommend putting the container behind a proxy instead of exposing ports. Then configure your certificates for the proxy.
 
-#Docker Compose
+**Docker Compose**
 If you want to run the container as a docker-compose project you do something like this:
 
+```yml
 version: "2"
 services:
   limesurvey:
@@ -40,6 +41,7 @@ networks:
   limesurvey:
     external:
       name: "${NETWORK}-${DEPLOY}"
-      
+```
+
 Note the environment variables used will need to be set in a .env file in the same directory as the docker-compose.yml file.
 The network limesurvey will need to be created beforehand. This allows the database and limesurvey to communicate directly as if they are on the same LAN.
