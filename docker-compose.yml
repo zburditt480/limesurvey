@@ -1,12 +1,15 @@
 version: "2"
 services:
   limesurvey:
-    image: zburditt480/limesurvey
+    image: limesurvey
     container_name: "limesurvey-${DEPLOY}"
     volumes:
       - "/var/log/docker/limesurvey-${DEPLOY}:/var/log/apache2"
     environment:
       - "TZ=America/Chicago"
+    ports:
+      - "80:80"
+      - "443:443"
     networks:
       - webtools
   db:
@@ -15,7 +18,6 @@ services:
     volumes:
       - "./db-conf:/etc/mysql"
       - "./data:/var/lib/mysql"
-      - "./my.cnf:/root/.my.cnf"
     environment:
       - "MYSQL_ROOT_PASSWORD=${ROOT_PWD}"
       - "TZ=America/Chicago"
